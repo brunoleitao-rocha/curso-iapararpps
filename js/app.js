@@ -112,6 +112,60 @@
     }
     if (!fromHash()) { var s = null; try { s = localStorage.getItem("iarpps-tab"); } catch (e) {} show(s || "inicio", false); }
     window.addEventListener("hashchange", fromHash);
+    // Botão "Próximo dia" no fim de cada área
+    var nomes = { inicio: "Visão geral", dia1: "1º dia · A base para tudo", dia2: "2º dia · Respostas com o seu jeito de trabalhar", dia3: "3º dia · Vibe Coding para RPPS" };
+    panels.forEach(function (p, i) {
+      var prox = panels[i + 1], alvo = p.querySelector(".content");
+      if (!prox || !alvo) return;
+      var b = document.createElement("button");
+      b.type = "button"; b.className = "next-day";
+      b.innerHTML = "<small>Continuar</small><strong></strong>";
+      b.querySelector("strong").textContent = (nomes[prox.id] || prox.id) + " →";
+      b.addEventListener("click", function () { show(prox.id, true); });
+      alvo.appendChild(b);
+    });
+
+    // Índice: destaca a seção que está na tela e mantém o chip visível no celular
+    if ("IntersectionObserver" in window) {
+      var obs = new IntersectionObserver(function (entradas) {
+        entradas.forEach(function (en) {
+          if (!en.isIntersecting) return;
+          var link = document.querySelector('.toc a[href="#' + en.target.id + '"]');
+          if (!link) return;
+          link.closest(".toc").querySelectorAll("a.on").forEach(function (a) { a.classList.remove("on"); });
+          link.classList.add("on");
+          var lista = link.closest("ol");
+          if (lista && lista.scrollWidth > lista.clientWidth) {
+            lista.scrollTo({ left: link.parentNode.offsetLeft - 16, behavior: "smooth" });
+          }
+        });
+      }, { rootMargin: "-35% 0px -60% 0px" });
+      document.querySelectorAll(".mod[id]").forEach(function (m) { obs.observe(m); });
+    }
+
+    // Toque na imagem para ampliar
+    document.querySelectorAll("figure img").forEach(function (img) {
+      img.addEventListener("click", function () {
+        var z = document.createElement("div");
+        z.className = "zoom"; z.setAttribute("role", "dialog"); z.setAttribute("aria-label", "Imagem ampliada");
+        z.innerHTML = '<img alt=""><button type="button">Fechar ✕</button>';
+        z.querySelector("img").src = img.src; z.querySelector("img").alt = img.alt;
+        function fechar() { z.remove(); document.removeEventListener("keydown", esc); }
+        function esc(e) { if (e.key === "Escape") fechar(); }
+        z.addEventListener("click", fechar);
+        document.addEventListener("keydown", esc);
+        document.body.appendChild(z);
+        z.querySelector("button").focus();
+      });
+    });
+
+    // Voltar ao topo
+    var topo = document.createElement("button");
+    topo.type = "button"; topo.className = "to-top"; topo.setAttribute("aria-label", "Voltar ao topo"); topo.textContent = "↑";
+    topo.addEventListener("click", function () { window.scrollTo({ top: 0, behavior: "smooth" }); });
+    document.body.appendChild(topo);
+    window.addEventListener("scroll", function () { topo.classList.toggle("show", window.scrollY > 700); }, { passive: true });
+
     document.querySelectorAll(".copy").forEach(function (btn) {
       btn.addEventListener("click", function () {
         var box = btn.parentNode, txt = "";
@@ -123,6 +177,17 @@
       });
     });
   }
+
+  // Altura real do cabeçalho fixo, para o índice e os links internos pararem no lugar certo
+  function medirCabecalho() {
+    var h = document.querySelector(".top");
+    if (h) document.documentElement.style.setProperty("--hdr", h.offsetHeight + "px");
+  }
+  document.addEventListener("DOMContentLoaded", function () {
+    medirCabecalho();
+    var h = document.querySelector(".top");
+    if (h && "ResizeObserver" in window) new ResizeObserver(medirCabecalho).observe(h);
+  });
 
   window.IARPPS = {
     sb: sb, configurado: !!configurado, baseUrl: baseUrl, chamarFuncao: chamarFuncao,
