@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>IA para RPPS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Public+Sans:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;600&family=Open+Sans:wght@400&display=swap">
+<link rel="stylesheet" href="css/estilo.css">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+<script src="js/config.js"></script>
+<script src="js/app.js"></script>
+</head>
+<body>
+<div class="page">
+<header class="top">
+  <div class="wrap top-row">
+    <svg class="logo" viewBox="0 0 233 39" role="img" aria-label="LEMA Edu" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="lg1" x1="170.723" y1="964.322" x2="212.453" y2="975.385" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#1D00FF"/><stop offset=".33" stop-color="#2C5AFF"/><stop offset=".67" stop-color="#389EFF"/><stop offset="1" stop-color="#3CB6FF"/></linearGradient></defs><g transform="translate(-49 -938)" fill="currentColor"><path d="M128.065 972.206 128.065 948.963 142.676 965.339 157.945 948.116 157.945 972.206 165.38 972.206 165.38 938 158.085 938 142.676 955.442 127.696 938 120.161 938 120.161 972.206 128.065 972.206Z"/><path d="M49.3571 938.08 49.3571 972.286 80.5432 972.206 80.5432 966.116 57.1412 966.056 57.3206 938.08 49.3571 938.08Z"/><path d="M116.015 972.236 116.015 966.445 92.1944 966.435 92.1944 957.545 112.716 957.545 112.716 951.884 92.1944 951.884 92.1944 943.771 116.015 943.791 116.015 938 84.3505 938 84.3505 972.206 116.015 972.236Z"/><path d="M168.63 972.196C168.63 972.196 177.64 965.13 190.855 965.13 202.975 965.13 213.301 972.196 213.301 972.196 213.301 972.196 204.032 962.14 190.855 962.14 177.679 962.14 168.63 972.196 168.63 972.196Z" fill="url(#lg1)"/><path d="M168.63 972.196 187.078 938 194.982 938 213.291 972.196 211.118 970.183 209.154 968.638 207.689 967.611 205.447 966.236 203.234 965.08 201.181 964.193 200.454 963.914 190.846 945.106 180.978 963.944 179.683 964.452 178.248 965.11 176.513 966.017 174.889 966.983 173.354 968.03 171.879 969.156 170.344 970.472 168.63 972.196Z"/><text font-family="Open Sans,sans-serif" font-size="19.1" transform="matrix(1.27575 0 0 .996678 216.64 972)">EDU</text></g></svg>
+    <div class="top-actions">
+      <span class="who" id="quem"></span>
+      <a class="btn-ghost" id="link-admin" href="admin.html" hidden>Admin</a>
+      <button class="btn-ghost" id="sair" type="button">Sair</button>
+    </div>
+  </div>
+  <nav class="wrap tabs" role="tablist" aria-label="Áreas do curso" id="abas" hidden>
+    <button class="tab" role="tab" id="t-inicio" data-tab="inicio" aria-selected="true">Visão geral</button>
+    <button class="tab" role="tab" id="t-dia1" data-tab="dia1" aria-selected="false"><b>01</b>A base para tudo</button>
+    <button class="tab" role="tab" id="t-dia2" data-tab="dia2" aria-selected="false"><b>02</b>Respostas com o seu jeito</button>
+    <button class="tab" role="tab" id="t-dia3" data-tab="dia3" aria-selected="false"><b>03</b>Vibe Coding</button>
+  </nav>
+</header>
+<main id="conteudo">
+  <div class="center-state"><h2>Carregando o curso…</h2><p>Verificando o seu acesso.</p></div>
+</main>
+<footer>
+  <div class="wrap foot">
+    <div>
+      <svg class="logo" viewBox="0 0 233 39" role="img" aria-label="LEMA Edu" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="lg2" x1="170.723" y1="964.322" x2="212.453" y2="975.385" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#1D00FF"/><stop offset=".33" stop-color="#2C5AFF"/><stop offset=".67" stop-color="#389EFF"/><stop offset="1" stop-color="#3CB6FF"/></linearGradient></defs><g transform="translate(-49 -938)" fill="currentColor"><path d="M128.065 972.206 128.065 948.963 142.676 965.339 157.945 948.116 157.945 972.206 165.38 972.206 165.38 938 158.085 938 142.676 955.442 127.696 938 120.161 938 120.161 972.206 128.065 972.206Z"/><path d="M49.3571 938.08 49.3571 972.286 80.5432 972.206 80.5432 966.116 57.1412 966.056 57.3206 938.08 49.3571 938.08Z"/><path d="M116.015 972.236 116.015 966.445 92.1944 966.435 92.1944 957.545 112.716 957.545 112.716 951.884 92.1944 951.884 92.1944 943.771 116.015 943.791 116.015 938 84.3505 938 84.3505 972.206 116.015 972.236Z"/><path d="M168.63 972.196C168.63 972.196 177.64 965.13 190.855 965.13 202.975 965.13 213.301 972.196 213.301 972.196 213.301 972.196 204.032 962.14 190.855 962.14 177.679 962.14 168.63 972.196 168.63 972.196Z" fill="url(#lg2)"/><path d="M168.63 972.196 187.078 938 194.982 938 213.291 972.196 211.118 970.183 209.154 968.638 207.689 967.611 205.447 966.236 203.234 965.08 201.181 964.193 200.454 963.914 190.846 945.106 180.978 963.944 179.683 964.452 178.248 965.11 176.513 966.017 174.889 966.983 173.354 968.03 171.879 969.156 170.344 970.472 168.63 972.196Z"/><text font-family="Open Sans,sans-serif" font-size="19.1" transform="matrix(1.27575 0 0 .996678 216.64 972)">EDU</text></g></svg>
+      <p>Desenvolvido por <strong>LEMA Educação</strong>.</p>
+      <p><a href="https://www.iapararpps.com.br" target="_blank" rel="noopener">www.iapararpps.com.br</a></p>
+    </div>
+    <div>
+      <p><strong>Contato do facilitador</strong></p>
+      <p>Bruno Leitão</p>
+      <p class="contact">(85) 98147-6918</p>
+      <p class="contact">bruno@lemaef.com.br</p>
+    </div>
+  </div>
+</footer>
+</div>
+<script>
+(async function () {
+  var A = window.IARPPS, main = document.getElementById("conteudo");
+  if (!A.configurado) return A.avisoConfig(main);
+  document.getElementById("sair").addEventListener("click", A.sair);
+
+  var s = await A.sessaoAtual();
+  if (!s || A.precisaTrocar(s)) return location.replace("index.html");
+  document.getElementById("quem").textContent = s.user.email;
+  A.ehAdmin().then(function (sim) { document.getElementById("link-admin").hidden = !sim; });
+
+  // O conteúdo só vem do banco para e-mails autorizados (regra RLS).
+  var r = await A.sb.from("course_pages").select("html").eq("slug", "curso").maybeSingle();
+  if (r.error) {
+    main.innerHTML = '<div class="center-state"><h2>Não foi possível carregar o curso</h2><p></p></div>';
+    main.querySelector("p").textContent = A.traduzErro(r.error);
+    return;
+  }
+  if (!r.data) {
+    main.innerHTML = '<div class="center-state"><h2>Acesso não liberado</h2><p>O e-mail <strong></strong> não está na lista de participantes autorizados. Fale com o facilitador do curso.</p><p><button class="btn inline" type="button">Sair</button></p></div>';
+    main.querySelector("strong").textContent = s.user.email;
+    main.querySelector("button").addEventListener("click", A.sair);
+    return;
+  }
+  main.innerHTML = r.data.html;
+  document.getElementById("abas").hidden = false;
+  A.iniciarCurso();
+})();
+</script>
+</body>
+</html>

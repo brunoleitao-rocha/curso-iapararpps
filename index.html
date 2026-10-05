@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Entrar · IA para RPPS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Public+Sans:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;600&family=Open+Sans:wght@400&display=swap">
+<link rel="stylesheet" href="css/estilo.css">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+<script src="js/config.js"></script>
+<script src="js/app.js"></script>
+</head>
+<body>
+<div class="page">
+<main class="auth">
+  <section class="auth-brand" aria-label="IA para RPPS">
+    <svg class="logo" viewBox="0 0 233 39" role="img" aria-label="LEMA Edu" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="lg1" x1="170.723" y1="964.322" x2="212.453" y2="975.385" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#1D00FF"/><stop offset=".33" stop-color="#2C5AFF"/><stop offset=".67" stop-color="#389EFF"/><stop offset="1" stop-color="#3CB6FF"/></linearGradient></defs><g transform="translate(-49 -938)" fill="currentColor"><path d="M128.065 972.206 128.065 948.963 142.676 965.339 157.945 948.116 157.945 972.206 165.38 972.206 165.38 938 158.085 938 142.676 955.442 127.696 938 120.161 938 120.161 972.206 128.065 972.206Z"/><path d="M49.3571 938.08 49.3571 972.286 80.5432 972.206 80.5432 966.116 57.1412 966.056 57.3206 938.08 49.3571 938.08Z"/><path d="M116.015 972.236 116.015 966.445 92.1944 966.435 92.1944 957.545 112.716 957.545 112.716 951.884 92.1944 951.884 92.1944 943.771 116.015 943.791 116.015 938 84.3505 938 84.3505 972.206 116.015 972.236Z"/><path d="M168.63 972.196C168.63 972.196 177.64 965.13 190.855 965.13 202.975 965.13 213.301 972.196 213.301 972.196 213.301 972.196 204.032 962.14 190.855 962.14 177.679 962.14 168.63 972.196 168.63 972.196Z" fill="url(#lg1)"/><path d="M168.63 972.196 187.078 938 194.982 938 213.291 972.196 211.118 970.183 209.154 968.638 207.689 967.611 205.447 966.236 203.234 965.08 201.181 964.193 200.454 963.914 190.846 945.106 180.978 963.944 179.683 964.452 178.248 965.11 176.513 966.017 174.889 966.983 173.354 968.03 171.879 969.156 170.344 970.472 168.63 972.196Z"/><text font-family="Open Sans,sans-serif" font-size="19.1" transform="matrix(1.27575 0 0 .996678 216.64 972)">EDU</text></g></svg>
+    <div>
+      <p class="eyebrow">Área do participante</p>
+      <h1>IA para RPPS</h1>
+      <p class="lead">Acesse o material completo do curso, organizado por dia, para consultar quando quiser.</p>
+    </div>
+    <ul class="auth-days">
+      <li><b>01</b><span>A base para tudo</span></li>
+      <li><b>02</b><span>Respostas com o seu jeito de trabalhar</span></li>
+      <li><b>03</b><span>Vibe Coding para RPPS</span></li>
+    </ul>
+  </section>
+
+  <section class="auth-form">
+    <div class="form-card" id="cartao">
+
+      <form id="f-entrar" novalidate>
+        <h2>Entrar</h2>
+        <p class="hint">Use o e-mail informado na inscrição. No primeiro acesso, entre com a senha padrão passada pelo facilitador.</p>
+        <div class="msg" id="m-entrar" role="alert" hidden></div>
+        <div class="field"><label for="e-email">E-mail</label>
+          <input class="input" id="e-email" type="email" autocomplete="email" required placeholder="seu.nome@rpps.gov.br"></div>
+        <div class="field"><label for="e-senha">Senha (6 números)</label>
+          <div class="pw"><input class="input" id="e-senha" type="password" inputmode="numeric" maxlength="6" autocomplete="current-password" required><button type="button" aria-pressed="false">Mostrar</button></div></div>
+        <div class="row-end"><a class="linkbtn" id="esqueci" href="https://wa.me/5585981476918" target="_blank" rel="noopener">Esqueci a minha senha</a></div>
+        <button class="btn" type="submit">Entrar</button>
+      </form>
+
+      <form id="f-trocar" novalidate hidden>
+        <h2>Crie a sua senha</h2>
+        <p class="hint" id="t-quem">Para continuar, troque a senha padrão por uma senha sua de 6 números.</p>
+        <div class="msg" id="m-trocar" role="alert" hidden></div>
+        <div class="field"><label for="t-senha">Nova senha (6 números)</label>
+          <div class="pw"><input class="input" id="t-senha" type="password" inputmode="numeric" maxlength="6" autocomplete="new-password" required><button type="button" aria-pressed="false">Mostrar</button></div></div>
+        <div class="field"><label for="t-senha2">Repita a nova senha</label>
+          <input class="input" id="t-senha2" type="password" inputmode="numeric" maxlength="6" autocomplete="new-password" required></div>
+        <button class="btn" type="submit">Salvar senha e entrar</button>
+        <div class="form-links"><button type="button" class="linkbtn" id="t-sair">Sair</button></div>
+      </form>
+
+    </div>
+  </section>
+</main>
+<footer>
+  <div class="wrap foot">
+    <div>
+      <svg class="logo" viewBox="0 0 233 39" role="img" aria-label="LEMA Edu" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="lg2" x1="170.723" y1="964.322" x2="212.453" y2="975.385" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#1D00FF"/><stop offset=".33" stop-color="#2C5AFF"/><stop offset=".67" stop-color="#389EFF"/><stop offset="1" stop-color="#3CB6FF"/></linearGradient></defs><g transform="translate(-49 -938)" fill="currentColor"><path d="M128.065 972.206 128.065 948.963 142.676 965.339 157.945 948.116 157.945 972.206 165.38 972.206 165.38 938 158.085 938 142.676 955.442 127.696 938 120.161 938 120.161 972.206 128.065 972.206Z"/><path d="M49.3571 938.08 49.3571 972.286 80.5432 972.206 80.5432 966.116 57.1412 966.056 57.3206 938.08 49.3571 938.08Z"/><path d="M116.015 972.236 116.015 966.445 92.1944 966.435 92.1944 957.545 112.716 957.545 112.716 951.884 92.1944 951.884 92.1944 943.771 116.015 943.791 116.015 938 84.3505 938 84.3505 972.206 116.015 972.236Z"/><path d="M168.63 972.196C168.63 972.196 177.64 965.13 190.855 965.13 202.975 965.13 213.301 972.196 213.301 972.196 213.301 972.196 204.032 962.14 190.855 962.14 177.679 962.14 168.63 972.196 168.63 972.196Z" fill="url(#lg2)"/><path d="M168.63 972.196 187.078 938 194.982 938 213.291 972.196 211.118 970.183 209.154 968.638 207.689 967.611 205.447 966.236 203.234 965.08 201.181 964.193 200.454 963.914 190.846 945.106 180.978 963.944 179.683 964.452 178.248 965.11 176.513 966.017 174.889 966.983 173.354 968.03 171.879 969.156 170.344 970.472 168.63 972.196Z"/><text font-family="Open Sans,sans-serif" font-size="19.1" transform="matrix(1.27575 0 0 .996678 216.64 972)">EDU</text></g></svg>
+      <p>Desenvolvido por <strong>LEMA Educação</strong>.</p>
+      <p><a href="https://www.iapararpps.com.br" target="_blank" rel="noopener">www.iapararpps.com.br</a></p>
+    </div>
+    <div>
+      <p><strong>Contato do facilitador</strong></p>
+      <p>Bruno Leitão</p>
+      <p class="contact">(85) 98147-6918</p>
+      <p class="contact">bruno@lemaef.com.br</p>
+    </div>
+  </div>
+</footer>
+</div>
+
+<script>
+(function () {
+  var A = window.IARPPS;
+  if (!A.configurado) { A.avisoConfig(document.getElementById("cartao")); return; }
+  var sb = A.sb, f = function (id) { return document.getElementById(id); };
+  var fEntrar = f("f-entrar"), fTrocar = f("f-trocar");
+  A.alternarSenha();
+
+  // "Esqueci a minha senha" abre o WhatsApp do facilitador já com o e-mail digitado
+  var esqueci = f("esqueci");
+  function atualizarWhats() { esqueci.href = A.linkWhatsApp(f("e-email").value.trim().toLowerCase()); }
+  f("e-email").addEventListener("input", atualizarWhats);
+  atualizarWhats();
+
+  function telaTrocar(sessao) {
+    fEntrar.hidden = true; fTrocar.hidden = false;
+    f("t-quem").textContent = "Conta: " + sessao.user.email + ". Para continuar, troque a senha padrão por uma senha sua de 6 números.";
+    f("t-senha").focus();
+  }
+  function seguir(sessao) {
+    if (A.precisaTrocar(sessao)) telaTrocar(sessao); else location.replace("curso.html");
+  }
+  function ocupado(form, sim) { form.querySelector("button[type=submit]").disabled = sim; }
+
+  A.sessaoAtual().then(function (s) { if (s) seguir(s); });
+
+  fEntrar.addEventListener("submit", async function (ev) {
+    ev.preventDefault();
+    var m = f("m-entrar"), email = f("e-email").value.trim().toLowerCase(), senha = f("e-senha").value.trim();
+    if (!email || !senha) return A.mostrar(m, "err", "Preencha e-mail e senha.");
+    ocupado(this, true);
+    var r = await sb.auth.signInWithPassword({ email: email, password: senha });
+    ocupado(this, false);
+    if (r.error) return A.mostrar(m, "err", A.traduzErro(r.error));
+    seguir(r.data.session);
+  });
+
+  fTrocar.addEventListener("submit", async function (ev) {
+    ev.preventDefault();
+    var m = f("m-trocar"), s1 = f("t-senha").value.trim(), s2 = f("t-senha2").value.trim();
+    if (!/^\d{6}$/.test(s1)) return A.mostrar(m, "err", "A senha precisa ter exatamente 6 números.");
+    if (s1 !== s2) return A.mostrar(m, "err", "As duas senhas não são iguais.");
+    ocupado(this, true);
+    try {
+      await A.chamarFuncao("trocar_senha", { nova_senha: s1 });
+      await sb.auth.refreshSession();
+      A.mostrar(m, "ok", "Senha salva. Abrindo o curso…");
+      setTimeout(function () { location.replace("curso.html"); }, 800);
+    } catch (e) {
+      ocupado(this, false);
+      A.mostrar(m, "err", A.traduzErro(e));
+    }
+  });
+  f("t-sair").addEventListener("click", A.sair);
+})();
+</script>
+</body>
+</html>

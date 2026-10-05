@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Admin · IA para RPPS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Public+Sans:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;600&family=Open+Sans:wght@400&display=swap">
+<link rel="stylesheet" href="css/estilo.css">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+<script src="js/config.js"></script>
+<script src="js/app.js"></script>
+</head>
+<body>
+<div class="page">
+<header class="top">
+  <div class="wrap top-row">
+    <svg class="logo" viewBox="0 0 233 39" role="img" aria-label="LEMA Edu" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="lg1" x1="170.723" y1="964.322" x2="212.453" y2="975.385" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#1D00FF"/><stop offset=".33" stop-color="#2C5AFF"/><stop offset=".67" stop-color="#389EFF"/><stop offset="1" stop-color="#3CB6FF"/></linearGradient></defs><g transform="translate(-49 -938)" fill="currentColor"><path d="M128.065 972.206 128.065 948.963 142.676 965.339 157.945 948.116 157.945 972.206 165.38 972.206 165.38 938 158.085 938 142.676 955.442 127.696 938 120.161 938 120.161 972.206 128.065 972.206Z"/><path d="M49.3571 938.08 49.3571 972.286 80.5432 972.206 80.5432 966.116 57.1412 966.056 57.3206 938.08 49.3571 938.08Z"/><path d="M116.015 972.236 116.015 966.445 92.1944 966.435 92.1944 957.545 112.716 957.545 112.716 951.884 92.1944 951.884 92.1944 943.771 116.015 943.791 116.015 938 84.3505 938 84.3505 972.206 116.015 972.236Z"/><path d="M168.63 972.196C168.63 972.196 177.64 965.13 190.855 965.13 202.975 965.13 213.301 972.196 213.301 972.196 213.301 972.196 204.032 962.14 190.855 962.14 177.679 962.14 168.63 972.196 168.63 972.196Z" fill="url(#lg1)"/><path d="M168.63 972.196 187.078 938 194.982 938 213.291 972.196 211.118 970.183 209.154 968.638 207.689 967.611 205.447 966.236 203.234 965.08 201.181 964.193 200.454 963.914 190.846 945.106 180.978 963.944 179.683 964.452 178.248 965.11 176.513 966.017 174.889 966.983 173.354 968.03 171.879 969.156 170.344 970.472 168.63 972.196Z"/><text font-family="Open Sans,sans-serif" font-size="19.1" transform="matrix(1.27575 0 0 .996678 216.64 972)">EDU</text></g></svg>
+    <div class="top-actions">
+      <span class="who" id="quem"></span>
+      <a class="btn-ghost" href="curso.html">Ver o curso</a>
+      <button class="btn-ghost" id="sair" type="button">Sair</button>
+    </div>
+  </div>
+</header>
+<main id="conteudo">
+  <div class="center-state"><h2>Carregando…</h2><p>Verificando a sua permissão de administrador.</p></div>
+</main>
+<footer>
+  <div class="wrap foot">
+    <div>
+      <svg class="logo" viewBox="0 0 233 39" role="img" aria-label="LEMA Edu" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="lg2" x1="170.723" y1="964.322" x2="212.453" y2="975.385" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#1D00FF"/><stop offset=".33" stop-color="#2C5AFF"/><stop offset=".67" stop-color="#389EFF"/><stop offset="1" stop-color="#3CB6FF"/></linearGradient></defs><g transform="translate(-49 -938)" fill="currentColor"><path d="M128.065 972.206 128.065 948.963 142.676 965.339 157.945 948.116 157.945 972.206 165.38 972.206 165.38 938 158.085 938 142.676 955.442 127.696 938 120.161 938 120.161 972.206 128.065 972.206Z"/><path d="M49.3571 938.08 49.3571 972.286 80.5432 972.206 80.5432 966.116 57.1412 966.056 57.3206 938.08 49.3571 938.08Z"/><path d="M116.015 972.236 116.015 966.445 92.1944 966.435 92.1944 957.545 112.716 957.545 112.716 951.884 92.1944 951.884 92.1944 943.771 116.015 943.791 116.015 938 84.3505 938 84.3505 972.206 116.015 972.236Z"/><path d="M168.63 972.196C168.63 972.196 177.64 965.13 190.855 965.13 202.975 965.13 213.301 972.196 213.301 972.196 213.301 972.196 204.032 962.14 190.855 962.14 177.679 962.14 168.63 972.196 168.63 972.196Z" fill="url(#lg2)"/><path d="M168.63 972.196 187.078 938 194.982 938 213.291 972.196 211.118 970.183 209.154 968.638 207.689 967.611 205.447 966.236 203.234 965.08 201.181 964.193 200.454 963.914 190.846 945.106 180.978 963.944 179.683 964.452 178.248 965.11 176.513 966.017 174.889 966.983 173.354 968.03 171.879 969.156 170.344 970.472 168.63 972.196Z"/><text font-family="Open Sans,sans-serif" font-size="19.1" transform="matrix(1.27575 0 0 .996678 216.64 972)">EDU</text></g></svg>
+      <p>Desenvolvido por <strong>LEMA Educação</strong>.</p>
+      <p><a href="https://www.iapararpps.com.br" target="_blank" rel="noopener">www.iapararpps.com.br</a></p>
+    </div>
+    <div>
+      <p><strong>Contato do facilitador</strong></p>
+      <p>Bruno Leitão</p>
+      <p class="contact">(85) 98147-6918</p>
+      <p class="contact">bruno@lemaef.com.br</p>
+    </div>
+  </div>
+</footer>
+</div>
+
+<template id="tpl-admin">
+  <div class="wrap admin">
+    <p class="eyebrow" style="color:var(--accent)">Administração</p>
+    <h1>Participantes do curso</h1>
+    <p class="sub">Só os e-mails desta lista conseguem entrar e ver o conteúdo do IA para RPPS. Senha padrão: <strong style="font-family:var(--f-mono)">060708</strong></p>
+    <div class="admin-grid">
+      <section class="panel-box">
+        <h2>Autorizar e-mails</h2>
+        <p class="hint">Cole um ou vários e-mails, um por linha (ou separados por vírgula). Cada um recebe acesso com a senha padrão <strong>060708</strong> e cria a própria senha de 6 números no primeiro acesso.</p>
+        <div class="msg" id="m-add" role="alert" hidden></div>
+        <form id="f-add" novalidate>
+          <div class="field"><label for="a-emails">E-mails dos participantes</label>
+            <textarea class="input" id="a-emails" placeholder="maria.souza@rpps.gov.br&#10;joao.lima@prefeitura.gov.br"></textarea></div>
+          <button class="btn" type="submit">Autorizar acesso</button>
+        </form>
+      </section>
+      <section class="panel-box">
+        <div class="stats">
+          <div class="stat"><b id="s-total">0</b><span>Autorizados</span></div>
+          <div class="stat"><b id="s-ativos">0</b><span>Já criaram a senha</span></div>
+          <div class="stat"><b id="s-pend">0</b><span>Com a senha padrão</span></div>
+        </div>
+        <div class="msg" id="m-lista" role="alert" hidden></div>
+        <div class="list-head">
+          <h2>Lista de participantes</h2>
+          <input class="input" id="busca" type="search" placeholder="Buscar e-mail" aria-label="Buscar e-mail">
+        </div>
+        <div class="tbl" style="margin:0">
+          <table class="ptable">
+            <thead><tr><th>E-mail</th><th>Situação</th><th>Último acesso</th><th><span hidden>Ações</span></th></tr></thead>
+            <tbody id="linhas"></tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+  </div>
+</template>
+
+<script>
+(async function () {
+  var A = window.IARPPS, main = document.getElementById("conteudo");
+  if (!A.configurado) return A.avisoConfig(main);
+  var sb = A.sb;
+  document.getElementById("sair").addEventListener("click", A.sair);
+
+  var s = await A.sessaoAtual();
+  if (!s || A.precisaTrocar(s)) return location.replace("index.html");
+  document.getElementById("quem").textContent = s.user.email;
+  if (!(await A.ehAdmin())) {
+    main.innerHTML = '<div class="center-state"><h2>Área restrita</h2><p>Esta página é só para o administrador do curso.</p><p><a class="btn inline" href="curso.html">Ir para o curso</a></p></div>';
+    return;
+  }
+  main.innerHTML = document.getElementById("tpl-admin").innerHTML;
+
+  var $ = function (id) { return document.getElementById(id); };
+  var participantes = [];
+  var confirmando = null; // e-mail aguardando confirmação de remoção
+
+  function fmtData(d) {
+    if (!d) return "—";
+    var dt = new Date(d);
+    return dt.toLocaleDateString("pt-BR") + " " + dt.toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" });
+  }
+  function ativo(p) { return p.cadastrado && !p.senha_padrao; }
+  function situacao(p) {
+    if (!p.cadastrado) return ['warn', 'Sem conta: use Resetar senha'];
+    if (p.senha_padrao) return ['muted', 'Senha padrão'];
+    return ['ok', 'Ativo'];
+  }
+
+  function render() {
+    var q = $("busca").value.trim().toLowerCase();
+    var lista = participantes.filter(function (p) { return !q || p.email.indexOf(q) >= 0; });
+    $("s-total").textContent = participantes.length;
+    $("s-ativos").textContent = participantes.filter(ativo).length;
+    $("s-pend").textContent = participantes.filter(function (p) { return !ativo(p); }).length;
+    var tb = $("linhas");
+    tb.innerHTML = "";
+    if (!lista.length) {
+      tb.innerHTML = '<tr><td colspan="4" class="empty"></td></tr>';
+      tb.querySelector("td").textContent = participantes.length ? "Nenhum e-mail encontrado na busca." : "Nenhum participante autorizado ainda. Adicione os e-mails ao lado.";
+      return;
+    }
+    lista.forEach(function (p) {
+      var tr = document.createElement("tr"), st = situacao(p);
+      tr.innerHTML = '<td class="email"></td><td><span class="pill"></span></td><td class="muted-cell"></td><td class="acts"></td>';
+      tr.children[0].textContent = p.email;
+      tr.querySelector(".pill").className = "pill " + st[0];
+      tr.querySelector(".pill").textContent = st[1];
+      tr.children[2].textContent = fmtData(p.ultimo_acesso);
+      var acts = tr.children[3];
+      if (!p.cadastrado || !p.senha_padrao) {
+        var br = document.createElement("button");
+        br.className = "btn small secondary"; br.type = "button"; br.textContent = "Resetar senha";
+        br.title = "Volta a senha deste participante para a padrão 060708";
+        br.addEventListener("click", function () { resetar(p.email, br); });
+        acts.appendChild(br);
+      }
+      var bx = document.createElement("button");
+      bx.type = "button";
+      if (confirmando === p.email) {
+        bx.className = "btn small danger"; bx.textContent = "Confirmar remoção";
+        bx.addEventListener("click", function () { remover(p.email); });
+        var bc = document.createElement("button");
+        bc.type = "button"; bc.className = "btn small secondary"; bc.textContent = "Cancelar";
+        bc.addEventListener("click", function () { confirmando = null; render(); });
+        acts.appendChild(bc);
+      } else {
+        bx.className = "btn small secondary"; bx.textContent = "Remover";
+        bx.addEventListener("click", function () { confirmando = p.email; render(); });
+      }
+      acts.appendChild(bx);
+      tb.appendChild(tr);
+    });
+  }
+
+  async function carregar() {
+    var r = await sb.rpc("admin_participants");
+    if (r.error) return A.mostrar($("m-lista"), "err", A.traduzErro(r.error));
+    participantes = r.data || [];
+    render();
+  }
+
+  async function resetar(email, botao) {
+    botao.disabled = true;
+    try {
+      await A.chamarFuncao("resetar", { email: email });
+      A.mostrar($("m-lista"), "ok", "A senha de " + email + " voltou para a padrão 060708. No próximo acesso, a pessoa cria uma nova senha de 6 números.");
+      carregar();
+    } catch (e) {
+      botao.disabled = false;
+      A.mostrar($("m-lista"), "err", A.traduzErro(e));
+    }
+  }
+
+  async function remover(email) {
+    confirmando = null;
+    try {
+      await A.chamarFuncao("remover", { email: email });
+      A.mostrar($("m-lista"), "ok", email + " foi removido. Essa pessoa não consegue mais entrar no curso.");
+      carregar();
+    } catch (e) {
+      render();
+      A.mostrar($("m-lista"), "err", A.traduzErro(e));
+    }
+  }
+
+  $("f-add").addEventListener("submit", async function (ev) {
+    ev.preventDefault();
+    var m = $("m-add");
+    var brutos = $("a-emails").value.split(/[\s,;]+/).map(function (x) { return x.trim().toLowerCase(); }).filter(Boolean);
+    var validos = [], invalidos = [];
+    brutos.forEach(function (e) { (/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(e) ? validos : invalidos).push(e); });
+    validos = validos.filter(function (e, i) { return validos.indexOf(e) === i; });
+    if (!validos.length) return A.mostrar(m, "err", invalidos.length ? "Nenhum e-mail válido. Confira: " + invalidos.join(", ") : "Digite pelo menos um e-mail.");
+    var btn = this.querySelector("button"); btn.disabled = true;
+    try { await A.chamarFuncao("adicionar", { emails: validos }); }
+    catch (e) { btn.disabled = false; return A.mostrar(m, "err", A.traduzErro(e)); }
+    btn.disabled = false;
+    $("a-emails").value = invalidos.join("\n");
+    A.mostrar(m, invalidos.length ? "err" : "ok",
+      validos.length + (validos.length === 1 ? " e-mail autorizado" : " e-mails autorizados") + " com a senha padrão 060708." +
+      (invalidos.length ? " Não reconheci estes, confira e tente de novo: " + invalidos.join(", ") : ""));
+    carregar();
+  });
+  $("busca").addEventListener("input", render);
+  carregar();
+})();
+</script>
+</body>
+</html>
